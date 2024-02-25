@@ -26,6 +26,7 @@ static bool handle_line(char const *line, FILE *bin)
         if (is_nbr > 1)
             return false;
     }
+    my_free_str_array(argv);
     return true;
 }
 
