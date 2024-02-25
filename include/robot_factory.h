@@ -12,3 +12,11 @@
     #include <unistd.h>
 
 void my_putchar(char c);
+
+int parsing(FILE *, FILE *);
+
+typedef bool(*is_func)(int, char **, FILE *);
+
+static const is_func is_functions_array[] = {
+    NULL
+    };
