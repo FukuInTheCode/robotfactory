@@ -5,7 +5,7 @@
 ** my_putstr.c for robot_factory
 */
 
-#include "robot_factory.h"
+#include "my.h"
 
 int my_putstr(char const *str)
 {

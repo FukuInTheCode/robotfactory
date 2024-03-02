@@ -5,7 +5,7 @@
 ** my_putchar.c for robot_factory
 */
 
-#include "robot_factory.h"
+#include "my.h"
 
 void my_putchar(char c)
 {
