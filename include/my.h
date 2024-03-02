@@ -34,4 +34,4 @@ typedef struct coucou {
 
 static is_func_t const is_functions_array[] = {
     NULL,
-    };
+};
