@@ -10,6 +10,8 @@
     #include <stdio.h>
     #include <stdlib.h>
     #include <unistd.h>
+    #include <stdbool.h>
+    #include <stdint.h>
 
 typedef struct label_s {
     char *name;
@@ -24,6 +26,10 @@ int parsing(FILE *, FILE *, label_t *);
 
 typedef bool(*is_func)(char **, FILE *, label_t *, int);
 
-static const is_func is_functions_array[] = {
-    NULL
+typedef struct coucou {
+    is_func f;
+} is_func_t;
+
+static is_func_t const is_functions_array[] = {
+    NULL,
     };

@@ -7,13 +7,13 @@
 
 #include "my.h"
 
-static bool handle_line(char const *line, FILE *bin, labels_t *labels, int pos)
+static bool handle_line(char const *line, FILE *bin, label_t *labels, int pos)
 {
     int is_nbr = 0;
     char **argv = my_str_to_word_array(line);
 
-    for (uint8_t i = 0; is_functions_array[i]; i++) {
-        is_nbr += is_functions_array[i](argv, bin, labels, pos);
+    for (uint8_t i = 0; is_functions_array[i].f; i++) {
+        is_nbr += is_functions_array[i].f(argv, bin, labels, pos);
         if (is_nbr > 1)
             return false;
     }
@@ -21,7 +21,7 @@ static bool handle_line(char const *line, FILE *bin, labels_t *labels, int pos)
     return true;
 }
 
-static int read_files(FILE *asmbly, FILE *bin, labels_t *labels)
+static int read_files(FILE *asmbly, FILE *bin, label_t *labels)
 {
     char *line = NULL;
     size_t len = 0;
@@ -37,7 +37,7 @@ static int read_files(FILE *asmbly, FILE *bin, labels_t *labels)
     return 0;
 }
 
-int parsing(FILE *asmbly, FILE *bin, labels_t *labels)
+int parsing(FILE *asmbly, FILE *bin, label_t *labels)
 {
     if (!asmbly || !bin)
         return 84;
