@@ -19,6 +19,8 @@ typedef struct label_s {
 } label_t;
 
 void my_putchar(char c);
+char *my_strdup(char const *src);
+int my_strlen(char const *str);
 char **my_str_to_word_array(char const *);
 int my_free_str_array(char **);
 
