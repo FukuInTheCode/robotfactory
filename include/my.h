@@ -23,6 +23,7 @@ char **my_str_to_word_array(char const *, char const *);
 int my_free_str_array(char **);
 char *my_strcat(char *dest, char const *src);
 int my_revbyte(int);
+int find_array_len(char **);
 
 int display_help(int argc, char **argv, char const *path);
 int parsing(FILE *, FILE *);
