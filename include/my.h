@@ -16,11 +16,6 @@
     #include <fcntl.h>
     #include "op.h"
 
-typedef struct label_s {
-    char *name;
-    int position;
-} label_t;
-
 void my_putchar(char c);
 char *my_strdup(char const *src);
 int my_strlen(char const *str);
@@ -36,6 +31,8 @@ int open_file(char *path);
 int gestion_asm_bin(char const *path);
 int open_asm(char const *);
 int create_bin(FILE *asmbly, char *name_champ);
+
+bool is_direct(char const *);
 
 typedef bool(*is_func)(char **, FILE *);
 
