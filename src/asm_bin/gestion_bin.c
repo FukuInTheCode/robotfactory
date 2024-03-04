@@ -12,6 +12,7 @@ int create_bin(FILE *asmbly, char *name_champ)
     FILE *bin;
     unsigned int magic = COREWAR_EXEC_MAGIC;
 
+    name_champ = realloc(name_champ, my_strlen(name_champ) + 5);
     magic = my_revbyte(magic);
     my_strcat(name_champ, ".cor");
     bin = fopen(name_champ, "wb");
