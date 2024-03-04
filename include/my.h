@@ -16,11 +16,6 @@
     #include <fcntl.h>
     #include "op.h"
 
-typedef struct label_s {
-    char *name;
-    int position;
-} label_t;
-
 void my_putchar(char c);
 char *my_strdup(char const *src);
 int my_strlen(char const *str);
@@ -32,6 +27,8 @@ int display_help(int argc, char **argv, char const *path);
 int parsing(FILE *, FILE *);
 int robot_factory(int argc, char **argv);
 int open_file(char *path);
+
+bool is_direct(char const *);
 
 typedef bool(*is_func)(char **, FILE *);
 
