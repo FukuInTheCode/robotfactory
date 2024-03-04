@@ -7,14 +7,6 @@
 
 #include "my.h"
 
-static int find_argv_len(char **argv)
-{
-    int len = 0;
-
-    for (; argv[len]; len++);
-    return len;
-}
-
 bool is_name(char **argv, FILE *bin)
 {
     int len = find_argv_len(argv);
