@@ -11,8 +11,8 @@ static int is_alphanum(char c, char const *sep)
 {
     for (int i = 0; sep[i]; i++)
         if (sep[i] == c)
-            return true;
-    return false;
+            return false;
+    return true;
 }
 
 static int dup_str(char **ret, size_t sub_i, char *tmp, int i)
