@@ -11,5 +11,7 @@ int robot_factory(int argc, char **argv)
 {
     if (argc != 2 || open_file(argv[1]) == 84)
         return 84;
+    if (gestion_asm_bin(argv[1]) == 84)
+        return 84;
     return 0;
 }
