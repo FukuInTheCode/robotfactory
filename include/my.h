@@ -26,13 +26,17 @@ char *my_strdup(char const *src);
 int my_strlen(char const *str);
 char **my_str_to_word_array(char const *, char const *);
 int my_free_str_array(char **);
+char *my_strcat(char *dest, char const *src);
 
 int display_help(int argc, char **argv, char const *path);
 int robot_factory(int argc, char **argv);
 int open_file(char *path);
-int parsing(FILE *, FILE *, label_t *, char const *);
+int gestion_asm_bin(char const *path);
+int open_asm(char const *);
+int create_bin(FILE *asmbly, char *name_champ);
+int parsing(FILE *, FILE *);
 
-typedef bool(*is_func)(char **, FILE *, label_t *, int);
+typedef bool(*is_func)(char **, FILE *);
 
 typedef struct func {
     is_func f;
