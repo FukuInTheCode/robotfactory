@@ -12,6 +12,8 @@
     #include <unistd.h>
     #include <stdbool.h>
     #include <stdint.h>
+    #include <sys/stat.h>
+    #include <fcntl.h>
     #include "op.h"
 
 typedef struct label_s {
@@ -25,11 +27,12 @@ int my_strlen(char const *str);
 char **my_str_to_word_array(char const *, char const *);
 int my_free_str_array(char **);
 
+int display_help(int argc, char **argv, char const *path);
 int parsing(FILE *, FILE *, label_t *, char const *);
 
 typedef bool(*is_func)(char **, FILE *, label_t *, int);
 
-typedef struct coucou {
+typedef struct func {
     is_func f;
 } is_func_t;
 
