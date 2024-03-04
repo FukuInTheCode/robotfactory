@@ -6,6 +6,7 @@
 */
 
 #include "my.h"
+#include <sys/stat.h>
 
 static bool handle_line(char const *line,
     FILE *bin, label_t *labels, char const *bin_name)
@@ -26,15 +27,14 @@ static bool handle_line(char const *line,
 }
 
 static int read_files(FILE *asmbly, FILE *bin,
-    label_t *labels, chat const *bin_name)
+    label_t *labels, char const *bin_name)
 {
     char *line = NULL;
     size_t len = 0;
-    int position = 0;
 
     for (;getline(&line, &len, asmbly) != -1;) {
             line[len] = 0;
-            if (!handle_line(line, bin, labels))
+            if (!handle_line(line, bin, labels, bin_name))
                 return 84;
     }
     return 0;
