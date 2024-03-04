@@ -29,6 +29,8 @@ int my_free_str_array(char **);
 
 int display_help(int argc, char **argv, char const *path);
 int parsing(FILE *, FILE *);
+int robot_factory(int argc, char **argv);
+int open_file(char *path);
 
 typedef bool(*is_func)(char **, FILE *);
 
