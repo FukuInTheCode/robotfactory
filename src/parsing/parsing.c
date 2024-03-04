@@ -14,8 +14,6 @@ static bool handle_line(char const *line, FILE *bin)
     int is_nbr = 0;
     char **argv = my_str_to_word_array(line, "\t ");
 
-    printf("%s\n", line);
-    return true;
     for (uint8_t i = 0; is_functions_array[i].f; i++) {
         is_nbr += is_functions_array[i].f(argv, bin);
         if (is_nbr != 1)
