@@ -16,7 +16,7 @@ int open_file(char *path)
     if (fd == -1)
         return 84;
     for (int i = 0; path[i] != '\0'; i++) {
-        if (path[i] == '.' && path[i + 1] == 's') {
+        if (path[i] == '.' && path[i + 1] == 's' && path[i + 2] == '\0') {
             close(fd);
             return 0;
         }
