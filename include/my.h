@@ -28,11 +28,11 @@ char **my_str_to_word_array(char const *, char const *);
 int my_free_str_array(char **);
 
 int display_help(int argc, char **argv, char const *path);
+int parsing(FILE *, FILE *);
 int robot_factory(int argc, char **argv);
 int open_file(char *path);
-int parsing(FILE *, FILE *, label_t *, char const *);
 
-typedef bool(*is_func)(char **, FILE *, label_t *, int);
+typedef bool(*is_func)(char **, FILE *);
 
 typedef struct func {
     is_func f;
