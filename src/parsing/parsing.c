@@ -28,9 +28,9 @@ static int read_files(FILE *asmbly, FILE *bin)
     size_t len = 0;
 
     for (; getline(&line, &len, asmbly) != -1;) {
-            line[len] = 0;
-            if (!handle_line(line, bin))
-                return 84;
+        line[len] = 0;
+        if (!handle_line(line, bin))
+            return 84;
     }
     return 0;
 }
