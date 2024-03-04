@@ -15,12 +15,13 @@ static bool do_header(FILE *asmbly, FILE *bin, char *line, size_t len)
 
     if (getline(&line, &len, asmbly) == -1)
         return 84;
-    argv = my_str_to_word_array(line, " \t");
+    argv = my_str_to_word_array(line, "\"");
     if (!is_name(argv, bin))
         return 84;
     my_free_str_array(argv);
     if (getline(&line, &len, asmbly) == -1)
         return 84;
+    argv = my_str_to_word_array(line, "\"");
     if (!is_comment(argv, bin))
         return 84;
     my_free_str_array(argv);
