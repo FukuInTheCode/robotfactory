@@ -12,20 +12,15 @@
 int open_file(char *path)
 {
     int fd = open(path, O_RDONLY);
-    bool flag = false;
 
     if (fd == -1)
         return 84;
     for (int i = 0; path[i] != '\0'; i++) {
-        if (!flag && path[i] == '.' && path[i + 1] == 's') {
-            flag == true;
+        if (path[i] == '.' && path[i + 1] == 's') {
+            close(fd);
             return 0;
         }
     }
-    if (flag == false) {
-        close(fd);
-        return 84;
-    }
     close(fd);
-    return 0;
+    return 84;
 }
