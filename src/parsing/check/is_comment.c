@@ -1,0 +1,21 @@
+/*
+** EPITECH PROJECT, 2024
+** is_comment.c
+** File description:
+** is_comment.c
+*/
+
+#include "my.h"
+
+bool is_comment(char **argv, FILE *bin)
+{
+    char **tmp = NULL;
+
+    if (find_array_len(argv) != 2)
+        return false;
+    tmp = my_str_to_word_array(*argv, " \t");
+    if (find_array_len(tmp) != 1 || my_strcmp(*tmp, COMMENT_CMD_STRING))
+        return false;
+    write_comment(argv, bin);
+    return true;
+}
