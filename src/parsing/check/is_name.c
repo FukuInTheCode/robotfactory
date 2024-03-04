@@ -16,7 +16,7 @@ bool is_name(char **argv, FILE *bin)
         return false;
     tmp = my_str_to_word_array(*argv, " \t");
     len = find_argv_len(tmp);
-    if (len != 1 || my_strcmp(tmp, ".name"))
+    if (len != 1 || my_strcmp(tmp, NAME_CMD_STRING))
         return false;
     write_name(argv, bin);
     return true;
