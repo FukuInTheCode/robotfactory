@@ -31,7 +31,7 @@ char **my_str_to_word_array(char const *str, char const *sep)
     for (int i = 0; str[i]; i++)
         if (is_alphanum(str[i], sep) != 0 && is_alphanum(str[i + 1], sep) == 0)
             count++;
-    ret = malloc(sizeof(char *) * (count + 2));
+    ret = malloc(sizeof(char *) * (count + 1));
     for (int i = 0; str[i]; i++)
         tmp[i] -= tmp[i] * (is_alphanum(tmp[i], sep) == 0);
     for (int i = 0; str[i]; i++) {
@@ -40,7 +40,7 @@ char **my_str_to_word_array(char const *str, char const *sep)
         i += dup_str(ret, sub_i, tmp, i) - 1;
         sub_i++;
     }
-    ret[count + 1] = NULL;
+    ret[count] = NULL;
     free(tmp);
     return ret;
 }
