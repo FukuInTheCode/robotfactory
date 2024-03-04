@@ -32,7 +32,7 @@ static int read_files(FILE *asmbly, FILE *bin,
     char *line = NULL;
     size_t len = 0;
 
-    for (;getline(&line, &len, asmbly) != -1;) {
+    for (; getline(&line, &len, asmbly) != -1;) {
             line[len] = 0;
             if (!handle_line(line, bin, labels, bin_name))
                 return 84;
