@@ -38,6 +38,7 @@ int create_bin(FILE *, char *);
 int write_live(char **, FILE *);
 
 bool is_direct(char const *);
+bool is_register(char const *);
 
 bool is_live(char **, FILE*);
 
