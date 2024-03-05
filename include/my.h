@@ -48,6 +48,7 @@ int write_live(char **, FILE *);
 int write_name(char **, FILE *);
 int write_comment(char **, FILE *);
 int write_ld(char **, FILE *);
+int write_st(char **argv, FILE *bin);
 
 bool is_direct(char const *);
 bool is_label(char const *);
