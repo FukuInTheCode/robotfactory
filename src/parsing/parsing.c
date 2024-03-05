@@ -9,52 +9,43 @@
 #include <stdio.h>
 #include <sys/stat.h>
 
-static int do_header(FILE *asmbly, FILE *bin, char *line, size_t len)
+static int do_header(char *lines[5001], FILE *bin)
 {
     char **argv = NULL;
 
-    if (getline(&line, &len, asmbly) == -1)
+    if (!my_strstr(lines[0], NAME_CMD_STRING))
         return 84;
-    argv = my_str_to_word_array(line, "\"");
+    argv = my_str_to_word_array(lines[0], "\"");
     if (!is_name(argv, bin))
         return 84;
-    my_free_str_array(argv);
-    if (getline(&line, &len, asmbly) == -1)
+    if (!my_strstr(lines[1], COMMENT_CMD_STRING))
         return 84;
-    argv = my_str_to_word_array(line, "\"");
+    my_free_str_array(argv);
+    argv = my_str_to_word_array(lines[1], "\"");
     if (!is_comment(argv, bin))
         return 84;
     my_free_str_array(argv);
     return 0;
 }
 
-static bool handle_line(char const *line, FILE *bin)
-{
-    int is_nbr = 0;
-    char **argv = my_str_to_word_array(line, "\t ");
-
-    for (uint8_t i = 0; is_functions_array[i].f; i++) {
-        is_nbr += is_functions_array[i].f(argv, bin);
-        if (is_nbr != 1)
-            return false;
-    }
-    my_free_str_array(argv);
-    return true;
-}
-
 static int read_files(FILE *asmbly, FILE *bin)
 {
     char *line = NULL;
     size_t len = 0;
+    char **lines[5001] = {0};
+    char *lines_arr[5001] = {0};
+    int i = 0;
 
-    if (do_header(asmbly, bin, line, len) == 84)
-        return 84;
     for (int aa = getline(&line, &len, asmbly); aa != -1;
         aa = getline(&line, &len, asmbly)) {
-        line[aa - 1] = 0;
-        if (!handle_line(line, bin))
-            return 84;
+        my_cleanstr(line, ' ', "\n\t,");
+        lines_arr[i] = my_strdup(line);
+        my_cleanstr(line, ' ', "\"");
+        lines[i] = my_str_to_word_array(line, " ");
+        i++;
     }
+    if (do_header(lines_arr, bin) == 84)
+        return 84;
     return 0;
 }
 
