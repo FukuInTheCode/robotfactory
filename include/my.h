@@ -49,6 +49,8 @@ int write_name(char **, FILE *);
 int write_comment(char **, FILE *);
 int write_ld(char **, FILE *);
 int write_st(char **argv, FILE *bin);
+int write_add(char **argv, FILE *bin);
+int write_sub(char **, FILE *);
 
 bool is_direct(char const *);
 bool is_label(char const *);
@@ -60,6 +62,7 @@ bool is_comment(char **, FILE*);
 bool is_name(char **, FILE*);
 bool is_ld(char **, FILE *);
 bool is_st(char **, FILE *);
+bool is_add(char **, FILE *);
 
 typedef bool(*is_func)(char **, FILE *);
 
