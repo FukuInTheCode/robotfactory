@@ -16,6 +16,13 @@
     #include <fcntl.h>
     #include "op.h"
 
+typedef enum arg_e {
+    OTHER = 0,
+    REGISTRE = 1,
+    DIRECT = 2,
+    INDIRECT = 3
+} arg_t;
+
 void my_putchar(char);
 char *my_strdup(char const *);
 int my_strlen(char const *);
