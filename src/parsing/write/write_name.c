@@ -6,14 +6,10 @@
 */
 
 #include "my.h"
+#include "op.h"
 
-int write_name(char **argv, FILE *bin)
+int write_name(char **argv, FILE *bin, header_t *header)
 {
-    char name[PROG_NAME_LENGTH];
-
-    for (int i = 0; i < PROG_NAME_LENGTH; i++)
-        name[i] = 0;
-    my_strcat(name, argv[1]);
-    fwrite(&name, sizeof(name), 1, bin);
+    my_strcat(header->prog_name, argv[1]);
     return 0;
 }

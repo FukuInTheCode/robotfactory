@@ -6,14 +6,10 @@
 */
 
 #include "my.h"
+#include "op.h"
 
-int write_comment(char **argv, FILE *bin)
+int write_comment(char **argv, FILE *bin, header_t *header)
 {
-    char comment[COMMENT_LENGTH];
-
-    for (int i = 0; i < COMMENT_LENGTH; i++)
-        comment[i] = 0;
-    my_strcat(comment, argv[1]);
-    fwrite(&comment, sizeof(comment), 1, bin);
+    my_strcat(header->comment, argv[1]);
     return 0;
 }

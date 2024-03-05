@@ -6,8 +6,9 @@
 */
 
 #include "my.h"
+#include "op.h"
 
-bool is_name(char **argv, FILE *bin)
+bool is_name(char **argv, FILE *bin, header_t *header)
 {
     int len = find_array_len(argv);
     char **tmp = NULL;
@@ -18,6 +19,6 @@ bool is_name(char **argv, FILE *bin)
     len = find_array_len(tmp);
     if (len != 1 || my_strcmp(*tmp, NAME_CMD_STRING))
         return false;
-    write_name(argv, bin);
+    write_name(argv, bin, header);
     return true;
 }
