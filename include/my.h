@@ -34,7 +34,7 @@ int my_strcmp(char const *, char const *);
 int my_getnbr(char const *);
 int find_array_len(char **);
 
-int display_help(int , char **, char const *);
+int display_help(int, char **, char const *);
 int parsing(FILE *, FILE *);
 int robot_factory(int, char **);
 int open_file(char *);
@@ -45,6 +45,7 @@ int create_bin(FILE *, char *);
 int write_live(char **, FILE *);
 int write_name(char **, FILE *);
 int write_comment(char **, FILE *);
+int write_sub(char **, FILE *);
 
 bool is_direct(char const *);
 bool is_label(char const *);
@@ -55,6 +56,7 @@ bool is_register(char const *);
 bool is_live(char **, FILE*);
 bool is_comment(char **, FILE*);
 bool is_name(char **, FILE*);
+bool is_add(char **, FILE *);
 
 typedef bool(*is_func)(char **, FILE *);
 
