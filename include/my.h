@@ -68,6 +68,7 @@ bool is_name(char **, FILE *, header_t *);
 bool is_ld(char **, FILE *);
 bool is_st(char **, FILE *);
 bool is_add(char **, FILE *);
+bool is_sub(char **, FILE *);
 
 typedef bool(*is_func)(char **, FILE *);
 
@@ -78,5 +79,8 @@ typedef struct func {
 static is_func_t const is_functions_array[] = {
     {is_live},
     {is_ld},
+    {is_st},
+    {is_add},
+    {is_sub},
     {NULL},
 };
