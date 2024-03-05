@@ -23,6 +23,8 @@ typedef enum arg_e {
     INDIRECT = 3
 } arg_t;
 
+uint8_t get_coding_byte(arg_t arg1, arg_t arg2, arg_t arg3, arg_t arg4);
+
 void my_putchar(char);
 char *my_strdup(char const *);
 int my_strlen(char const *);
@@ -45,16 +47,18 @@ int create_bin(FILE *, char *);
 int write_live(char **, FILE *);
 int write_name(char **, FILE *);
 int write_comment(char **, FILE *);
+int write_ld(char **, FILE *);
 
 bool is_direct(char const *);
 bool is_label(char const *);
 bool is_indirect(char const *);
 bool is_register(char const *);
 
-
 bool is_live(char **, FILE*);
 bool is_comment(char **, FILE*);
 bool is_name(char **, FILE*);
+bool is_ld(char **, FILE *);
+bool is_st(char **, FILE *);
 
 typedef bool(*is_func)(char **, FILE *);
 
