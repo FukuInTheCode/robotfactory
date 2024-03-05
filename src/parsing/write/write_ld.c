@@ -7,6 +7,9 @@
 
 #include "my.h"
 
+// marche quand le premier arg est
+// un indirect mais doit changer quand c un dire direct
+
 int write_ld(char **argv, FILE *bin)
 {
     unsigned char indicator = 0x02;
