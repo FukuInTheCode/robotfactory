@@ -16,11 +16,11 @@ int write_ld(char **argv, FILE *bin)
 
     fwrite(&indicator, sizeof(indicator), 1, bin);
     if (is_direct(argv[1])) {
-        coding_byte = get_coding_byte(DIRECT, REGISTRER, OTHER, OTHER);
+        coding_byte = get_coding_byte(DIRECT, REGISTRE, OTHER, OTHER);
         fwrite(&coding_byte, sizeof(coding_byte), 1, bin);
     }
     if (is_indirect(argv[1])) {
-        coding_byte = get_coding_byte(INDIRECT, REGISTER, OTHER, OTHER);
+        coding_byte = get_coding_byte(INDIRECT, REGISTRE, OTHER, OTHER);
         fwrite(&coding_byte, sizeof(coding_byte), 1, bin);
     }
     fwrite(&nbr, sizeof(nbr), 1, bin);
