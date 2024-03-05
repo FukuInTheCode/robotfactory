@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <sys/stat.h>
 
-static bool do_header(FILE *asmbly, FILE *bin, char *line, size_t len)
+static int do_header(FILE *asmbly, FILE *bin, char *line, size_t len)
 {
     char **argv = NULL;
 
