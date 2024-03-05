@@ -36,13 +36,18 @@ int open_asm(char const *);
 int create_bin(FILE *, char *);
 
 int write_live(char **, FILE *);
+int write_name(char **, FILE *);
+int write_comment(char **, FILE *);
 
 bool is_direct(char const *);
 bool is_label(char const *);
 bool is_indirect(char const *);
 bool is_register(char const *);
 
+
 bool is_live(char **, FILE*);
+bool is_comment(char **, FILE*);
+bool is_name(char **, FILE*);
 
 typedef bool(*is_func)(char **, FILE *);
 
