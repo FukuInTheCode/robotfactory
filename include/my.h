@@ -26,6 +26,7 @@ int my_revbyte(int);
 int my_strcmp(char const *, char const *);
 int my_getnbr(char const *);
 int find_array_len(char **);
+int my_cleanstr(char *, char, char const *);
 
 int display_help(int , char **, char const *);
 int parsing(FILE *, FILE *);
