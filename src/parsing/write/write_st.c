@@ -9,6 +9,5 @@
 
 int write_st(char **argv, FILE *bin)
 {
-
     return 0;
 }

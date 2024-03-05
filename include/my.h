@@ -36,7 +36,7 @@ int my_strcmp(char const *, char const *);
 int my_getnbr(char const *);
 int find_array_len(char **);
 
-int display_help(int , char **, char const *);
+int display_help(int, char **, char const *);
 int parsing(FILE *, FILE *);
 int robot_factory(int, char **);
 int open_file(char *);
