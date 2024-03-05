@@ -31,13 +31,15 @@ int my_strlen(char const *);
 char **my_str_to_word_array(char const *, char const *);
 int my_free_str_array(char **);
 char *my_strcat(char *, char const *);
-int my_revbyte(int);
 int my_strcmp(char const *, char const *);
 int my_getnbr(char const *);
 int find_array_len(char **);
 int my_cleanstr(char *, char, char const *);
 char *my_strstr(char const *, char const *);
 int my_strncmp(char const *, char const *, int);
+uint8_t my_revbyte_8(uint8_t);
+uint16_t my_revbyte_16(uint16_t);
+uint32_t my_revbyte_32(uint32_t);
 
 int display_help(int, char **, char const *);
 int parsing(FILE *, FILE *);
@@ -75,5 +77,6 @@ typedef struct func {
 
 static is_func_t const is_functions_array[] = {
     {is_live},
+    {is_ld},
     {NULL},
 };
