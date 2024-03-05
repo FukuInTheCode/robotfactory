@@ -27,7 +27,8 @@ int my_strcmp(char const *, char const *);
 int my_getnbr(char const *);
 int find_array_len(char **);
 int my_cleanstr(char *, char, char const *);
-int my_strstr(char const *, char const *);
+char *my_strstr(char const *, char const *);
+int my_strncmp(char const *, char const *, int);
 
 int display_help(int , char **, char const *);
 int parsing(FILE *, FILE *);
