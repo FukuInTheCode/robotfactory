@@ -34,6 +34,7 @@ int open_asm(char const *);
 int create_bin(FILE *asmbly, char *name_champ);
 
 bool is_direct(char const *);
+bool is_label(char const *);
 
 typedef bool(*is_func)(char **, FILE *);
 
