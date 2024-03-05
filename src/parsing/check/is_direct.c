@@ -6,13 +6,14 @@
 */
 
 #include "my.h"
+#include "op.h"
 
 bool is_direct(char const *arg)
 {
-    if (*arg != 'r' || !arg[1])
+    if (*arg != DIRECT_CHAR || !arg[1])
         return false;
     for (int i = 1; arg[i]; i++)
-        if (!('1' <= arg[i] && arg[i] <= '9'))
+        if (!('0' <= arg[i] && arg[i] <= '9'))
             return false;
     return true;
 }
