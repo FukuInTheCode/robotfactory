@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-bool is_add(char **argv, FILE *bin)
+bool is_sub(char **argv, FILE *bin)
 {
     if (find_array_len(argv) != 4 || argv[1] == NULL
         || argv[2] == NULL || argv[3] == NULL)
