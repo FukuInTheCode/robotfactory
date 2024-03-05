@@ -11,8 +11,8 @@ int write_ld(char **argv, FILE *bin)
 {
     unsigned char indicator = 0x02;
     unsigned int coding_byte;
-    unsigned int nbr = my_getnbr(argv[1]);
-    unsigned int nbr2 = my_getnbr(argv[1] + 1);
+    unsigned int nbr = my_revbyte(my_getnbr(argv[1]));
+    unsigned int nbr2 = my_revbyte(my_getnbr(argv[2] + 1));
 
     fwrite(&indicator, sizeof(indicator), 1, bin);
     if (is_direct(argv[1])) {
