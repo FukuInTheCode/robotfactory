@@ -8,6 +8,9 @@
 #include "my.h"
 #include <stdint.h>
 
+// faire un sizeof(uint8_t) si argv[2] est un registre au
+// dernier write
+
 int write_st(char **argv, FILE *bin)
 {
     unsigned char indicator = 0x03;
