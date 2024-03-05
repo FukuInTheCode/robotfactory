@@ -16,6 +16,15 @@
     #include <fcntl.h>
     #include "op.h"
 
+typedef enum arg_e {
+    OTHER = 0,
+    REGISTRE = 1,
+    DIRECT = 2,
+    INDIRECT = 3
+} arg_t;
+
+uint8_t get_coding_byte(arg_t arg1, arg_t arg2, arg_t arg3, arg_t arg4);
+
 void my_putchar(char);
 char *my_strdup(char const *);
 int my_strlen(char const *);
@@ -30,7 +39,7 @@ int my_cleanstr(char *, char, char const *);
 char *my_strstr(char const *, char const *);
 int my_strncmp(char const *, char const *, int);
 
-int display_help(int , char **, char const *);
+int display_help(int, char **, char const *);
 int parsing(FILE *, FILE *);
 int robot_factory(int, char **);
 int open_file(char *);
@@ -41,16 +50,22 @@ int create_bin(FILE *, char *);
 int write_live(char **, FILE *);
 int write_name(char **, FILE *, header_t *);
 int write_comment(char **, FILE *, header_t *);
+int write_ld(char **, FILE *);
+int write_st(char **argv, FILE *bin);
+int write_add(char **argv, FILE *bin);
+int write_sub(char **, FILE *);
 
 bool is_direct(char const *);
 bool is_label(char const *);
 bool is_indirect(char const *);
 bool is_register(char const *);
 
-
 bool is_live(char **, FILE *);
 bool is_comment(char **, FILE *, header_t *);
 bool is_name(char **, FILE *, header_t *);
+bool is_ld(char **, FILE *);
+bool is_st(char **, FILE *);
+bool is_add(char **, FILE *);
 
 typedef bool(*is_func)(char **, FILE *);
 

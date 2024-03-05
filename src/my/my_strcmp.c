@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** my_strcmp.c
 ** File description:
-**
+** function for compare two strings
 */
 
 int my_strcmp(char const *s1, char const *s2)
