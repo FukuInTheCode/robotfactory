@@ -9,6 +9,8 @@
 
 bool is_st(char **argv, FILE *bin)
 {
+    if (argv[1] == NULL || argv[2] == NULL)
+        return false;
     if (my_strcmp(argv[0], "st") == 0 && find_array_len(argv) == 3
         && is_register(argv[1])
         && (is_register(argv[2]) || is_indirect(argv[2]))) {
