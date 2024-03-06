@@ -54,7 +54,6 @@ static int handle_lines(char **lines[5001], FILE *bin)
             nbr += is_functions_array[j].f(lines[i], bin);
         if (nbr != 1)
             return 84;
-        printf("%s\n", lines[i][0]);
     }
     return 0;
 }
