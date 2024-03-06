@@ -63,6 +63,7 @@ int write_ldi(char **, FILE *);
 int write_zjmp(char **, FILE *);
 int write_sti(char **, FILE *);
 int write_fork(char **, FILE *);
+int write_aff(char **, FILE *);
 
 bool is_direct(char const *);
 bool is_label(char const *);
@@ -100,6 +101,7 @@ bool is_ldi(char **, FILE *);
 bool is_zjmp(char **, FILE *);
 bool is_sti(char **, FILE *);
 bool is_fork(char **, FILE *);
+bool is_aff(char **, FILE *);
 
 typedef bool(*is_func)(char **, FILE *);
 
