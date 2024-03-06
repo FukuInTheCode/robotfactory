@@ -60,7 +60,9 @@ bool is_label(char const *);
 bool is_indirect(char const *);
 bool is_register(char const *);
 
+
 int count_live(char **);
+int count_st(char **);
 
 bool is_live(char **, FILE *);
 bool is_comment(char **, FILE *, header_t *);
