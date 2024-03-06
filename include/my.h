@@ -74,6 +74,8 @@ bool is_ld(char **, FILE *);
 bool is_st(char **, FILE *);
 bool is_add(char **, FILE *);
 
+
+
 typedef bool(*is_func)(char **, FILE *);
 
 typedef struct func {
@@ -82,5 +84,19 @@ typedef struct func {
 
 static is_func_t const is_functions_array[] = {
     {is_live},
+    {NULL},
+};
+
+typedef int(*count_func)(char **);
+
+typedef struct cfunc {
+    count_func f;
+} count_func_t;
+
+static count_func_t const count_functions_array[] = {
+    {count_live},
+    {count_st},
+    {count_add},
+    {count_sub},
     {NULL},
 };

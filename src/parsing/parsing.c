@@ -10,7 +10,17 @@
 #include <stdio.h>
 #include <sys/stat.h>
 
-static int do_header(char *lines[5001], FILE *bin)
+static int find_pro_size(char **lines[5001])
+{
+    int size = 0;
+
+    for (int i = 2; lines[i]; i++)
+        for (int j = 0; count_functions_array[j].f; j++)
+            size += count_functions_array[j].f(lines[i]);
+    return size;
+}
+
+static int do_header(char *lines[5001], FILE *bin, char **lines2[5001])
 {
     char **argv = NULL;
     header_t header = {my_revbyte(COREWAR_EXEC_MAGIC), {0}, 0, {0}};
@@ -29,6 +39,7 @@ static int do_header(char *lines[5001], FILE *bin)
     if (!is_comment(argv, bin, &header))
         return 84;
     my_free_str_array(argv);
+    header.prog_size = find_pro_size(lines2);
     fwrite(&header, sizeof(header_t), 1, bin);
     return 0;
 }
