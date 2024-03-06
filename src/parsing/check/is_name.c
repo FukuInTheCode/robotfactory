@@ -13,7 +13,7 @@ bool is_name(char **argv, FILE *bin, header_t *header)
     int len = find_array_len(argv);
     char **tmp = NULL;
 
-    if (len != 2)
+    if (len != 2 || my_strlen(argv[1]) > PROG_NAME_LENGTH)
         return false;
     tmp = my_str_to_word_array(*argv, " \t");
     len = find_array_len(tmp);
