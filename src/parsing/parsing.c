@@ -10,11 +10,23 @@
 #include <stdio.h>
 #include <sys/stat.h>
 
-static int do_header(char *lines[5001], FILE *bin)
+static int find_pro_size(char **lines[5001])
+{
+    int size = 0;
+
+    for (int i = 2; lines[i]; i++)
+        for (int j = 0; count_functions_array[j].f; j++)
+            size += count_functions_array[j].f(lines[i]);
+    return my_revbyte_32(size);
+}
+
+static int do_header(char *lines[5001], FILE *bin, char **lines2[5001])
 {
     char **argv = NULL;
-    header_t header = {my_revbyte(COREWAR_EXEC_MAGIC), {0}, 0, {0}};
+    header_t header = {my_revbyte_32(COREWAR_EXEC_MAGIC), {0}, 0, {0}};
 
+    if (!*lines)
+        return 84;
     if (!my_strstr(lines[0], NAME_CMD_STRING))
         return 84;
     argv = my_str_to_word_array(lines[0], "\"");
@@ -27,6 +39,7 @@ static int do_header(char *lines[5001], FILE *bin)
     if (!is_comment(argv, bin, &header))
         return 84;
     my_free_str_array(argv);
+    header.prog_size = find_pro_size(lines2);
     fwrite(&header, sizeof(header_t), 1, bin);
     return 0;
 }
@@ -63,6 +76,7 @@ static int read_files(FILE *asmbly, FILE *bin)
 
     for (int aa = getline(&line, &len, asmbly); aa != -1;
         aa = getline(&line, &len, asmbly)) {
+        my_cleanstr(line, '\0', "#");
         my_cleanstr(line, ' ', "\n\t,");
         if (is_line_null(line))
             continue;
@@ -71,7 +85,7 @@ static int read_files(FILE *asmbly, FILE *bin)
         lines[i] = my_str_to_word_array(line, " ");
         i++;
     }
-    if (do_header(lines_arr, bin) == 84)
+    if (do_header(lines_arr, bin, lines) == 84)
         return 84;
     return handle_lines(lines, bin);
 }
