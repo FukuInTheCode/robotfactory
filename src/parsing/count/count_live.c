@@ -9,5 +9,7 @@
 
 int count_live(char **argv)
 {
+    if (my_strcmp("live", *argv))
+        return 0;
     return 5;
 }
