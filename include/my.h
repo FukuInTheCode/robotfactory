@@ -62,6 +62,13 @@ bool is_label(char const *);
 bool is_indirect(char const *);
 bool is_register(char const *);
 
+
+int count_live(char **);
+int count_st(char **);
+int count_ld(char **);
+int count_add(char **);
+int count_sub(char **);
+
 bool is_live(char **, FILE *);
 bool is_comment(char **, FILE *, header_t *);
 bool is_name(char **, FILE *, header_t *);
@@ -69,6 +76,8 @@ bool is_ld(char **, FILE *);
 bool is_st(char **, FILE *);
 bool is_add(char **, FILE *);
 bool is_sub(char **, FILE *);
+
+
 
 typedef bool(*is_func)(char **, FILE *);
 
@@ -82,5 +91,19 @@ static is_func_t const is_functions_array[] = {
     {is_st},
     {is_add},
     {is_sub},
+    {NULL},
+};
+
+typedef int(*count_func)(char **);
+
+typedef struct cfunc {
+    count_func f;
+} count_func_t;
+
+static count_func_t const count_functions_array[] = {
+    {count_live},
+    {count_st},
+    {count_add},
+    {count_sub},
     {NULL},
 };
