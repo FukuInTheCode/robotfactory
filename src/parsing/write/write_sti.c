@@ -7,6 +7,23 @@
 
 #include "my.h"
 
+static unsigned long write_coding_byte2(char **argv, FILE *bin)
+{
+    uint8_t coding_byte;
+    
+    if (is_direct(argv[2])) {
+        if (is_register(argv[3])) {
+            coding_byte = get_coding_byte(REGISTRE, DIRECT, REGISTRE, OTHER);
+            return fwrite(&coding_byte, sizeof(uint8_t), 1, bin);
+        }
+        if (is_direct(argv[3])) {
+            coding_byte = get_coding_byte(REGISTRE, DIRECT, DIRECT, OTHER);
+            return fwrite(&coding_byte, sizeof(uint8_t), 1, bin);
+        }
+    }
+    return 0;
+}
+
 static unsigned long write_coding_byte(char **argv, FILE* bin)
 {
     uint8_t coding_byte;
@@ -21,16 +38,7 @@ static unsigned long write_coding_byte(char **argv, FILE* bin)
             return fwrite(&coding_byte, sizeof(uint8_t), 1, bin);
         }
     }
-    if (is_direct(argv[2])) {
-        if (is_register(argv[3])) {
-            coding_byte = get_coding_byte(REGISTRE, DIRECT, REGISTRE, OTHER);
-            return fwrite(&coding_byte, sizeof(uint8_t), 1, bin);
-        }
-        if (is_direct(argv[3])) {
-            coding_byte = get_coding_byte(REGISTRE, DIRECT, DIRECT, OTHER);
-            return fwrite(&coding_byte, sizeof(uint8_t), 1, bin);
-        }
-    }
+    write_coding_byte2(argv, bin);
     return 0;
 }
 

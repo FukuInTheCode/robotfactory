@@ -5,7 +5,7 @@
 ** function for write
 */
 
- #include "my.h"
+#include "my.h"
 
 int write_fork(char **argv, FILE *bin)
 {
