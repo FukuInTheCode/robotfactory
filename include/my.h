@@ -104,6 +104,8 @@ typedef struct func {
 
 static is_func_t const is_functions_array[] = {
     {is_live},
+    {is_or},
+    {is_xor},
     {is_ld},
     {is_st},
     {is_add},
