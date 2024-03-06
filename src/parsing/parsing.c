@@ -17,7 +17,7 @@ static int find_pro_size(char **lines[5001])
     for (int i = 2; lines[i]; i++)
         for (int j = 0; count_functions_array[j].f; j++)
             size += count_functions_array[j].f(lines[i]);
-    return size;
+    return my_revbyte_32(size);
 }
 
 static int do_header(char *lines[5001], FILE *bin, char **lines2[5001])
@@ -76,6 +76,7 @@ static int read_files(FILE *asmbly, FILE *bin)
 
     for (int aa = getline(&line, &len, asmbly); aa != -1;
         aa = getline(&line, &len, asmbly)) {
+        my_cleanstr(line, '\0', "#");
         my_cleanstr(line, ' ', "\n\t,");
         if (is_line_null(line))
             continue;
@@ -84,7 +85,7 @@ static int read_files(FILE *asmbly, FILE *bin)
         lines[i] = my_str_to_word_array(line, " ");
         i++;
     }
-    if (do_header(lines_arr, bin) == 84)
+    if (do_header(lines_arr, bin, lines) == 84)
         return 84;
     return handle_lines(lines, bin);
 }

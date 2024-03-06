@@ -103,6 +103,7 @@ typedef struct cfunc {
 static count_func_t const count_functions_array[] = {
     {count_live},
     {count_st},
+    {count_ld},
     {count_add},
     {count_sub},
     {NULL},
