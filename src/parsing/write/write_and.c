@@ -76,16 +76,16 @@ unsigned long write_arg2_and(char **argv, FILE *bin)
         nbr = my_revbyte_16(my_getnbr(argv[1] + 2));
         return fwrite(&label, sizeof(uint16_t), 1, bin);
     }
-    if (is_direct(argv[1])) {
-        nbr = my_revbyte_32(my_getnbr(argv[1] + 1));
+    if (is_direct(argv[2])) {
+        nbr = my_revbyte_32(my_getnbr(argv[2] + 1));
         return fwrite(&nbr, sizeof(int), 1, bin);
     }
-    if (is_indirect(argv[1])) {
-        nbr = my_revbyte_16(my_getnbr(argv[1]));
+    if (is_indirect(argv[2])) {
+        nbr = my_revbyte_16(my_getnbr(argv[2]));
         return fwrite(&nbr, sizeof(uint16_t), 1, bin);
     }
-    if (is_register(argv[1])) {
-        nbr = my_getnbr(argv[1] + 1);
+    if (is_register(argv[2])) {
+        nbr = my_getnbr(argv[2] + 1);
         return fwrite(&nbr, sizeof(uint8_t), 1, bin);
     }
     return 84;
