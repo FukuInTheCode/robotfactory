@@ -7,9 +7,9 @@
 
 #include "my.h"
 
-int count_aff(char **argv)
+int count_fork(char **argv)
 {
-    if (my_strcmp("aff", *argv))
+    if (my_strcmp("fork", *argv))
         return 0;
     return 3;
 }

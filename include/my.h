@@ -68,6 +68,16 @@ int count_st(char **);
 int count_ld(char **);
 int count_add(char **);
 int count_sub(char **);
+int count_and(char **);
+int count_or(char **);
+int count_xor(char **);
+int count_zjmp(char **);
+int count_ldi(char **);
+int count_sti(char **);
+int count_fork(char **);
+int count_lld(char **);
+int count_lldi(char **);
+int count_aff(char **);
 
 bool is_live(char **, FILE *);
 bool is_comment(char **, FILE *, header_t *);
@@ -106,5 +116,15 @@ static count_func_t const count_functions_array[] = {
     {count_ld},
     {count_add},
     {count_sub},
+    {count_and},
+    {count_or},
+    {count_xor},
+    {count_zjmp},
+    {count_ldi},
+    {count_sti},
+    {count_fork},
+    {count_lld},
+    {count_lldi},
+    {count_aff},
     {NULL},
 };

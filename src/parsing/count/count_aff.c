@@ -7,9 +7,9 @@
 
 #include "my.h"
 
-int count_live(char **argv)
+int count_aff(char **argv)
 {
-    if (my_strcmp("live", *argv))
+    if (my_strcmp("aff", *argv))
         return 0;
-    return 5;
+    return 3;
 }
