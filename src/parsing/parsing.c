@@ -13,7 +13,7 @@
 static int do_header(char *lines[5001], FILE *bin)
 {
     char **argv = NULL;
-    header_t header = {my_revbyte(COREWAR_EXEC_MAGIC), {0}, 0, {0}};
+    header_t header = {my_revbyte_32(COREWAR_EXEC_MAGIC), {0}, 0, {0}};
 
     if (!my_strstr(lines[0], NAME_CMD_STRING))
         return 84;
