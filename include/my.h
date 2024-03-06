@@ -57,6 +57,7 @@ int write_st(char **, FILE *);
 int write_add(char **, FILE *);
 int write_sub(char **, FILE *);
 int write_and(char **, FILE *);
+int write_xor(char **, FILE *);
 int write_or(char **, FILE *);
 
 bool is_direct(char const *);
@@ -89,6 +90,7 @@ bool is_st(char **, FILE *);
 bool is_add(char **, FILE *);
 bool is_and(char **, FILE *);
 bool is_sub(char **, FILE *);
+bool is_xor(char **, FILE *);
 bool is_or(char **, FILE *);
 
 
