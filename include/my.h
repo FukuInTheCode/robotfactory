@@ -53,9 +53,10 @@ int write_live(char **, FILE *);
 int write_name(char **, FILE *, header_t *);
 int write_comment(char **, FILE *, header_t *);
 int write_ld(char **, FILE *);
-int write_st(char **argv, FILE *bin);
-int write_add(char **argv, FILE *bin);
+int write_st(char **, FILE *);
+int write_add(char **, FILE *);
 int write_sub(char **, FILE *);
+int write_and(char **, FILE *);
 
 bool is_direct(char const *);
 bool is_label(char const *);
@@ -85,6 +86,7 @@ bool is_name(char **, FILE *, header_t *);
 bool is_ld(char **, FILE *);
 bool is_st(char **, FILE *);
 bool is_add(char **, FILE *);
+bool is_and(char **, FILE *);
 bool is_sub(char **, FILE *);
 
 
