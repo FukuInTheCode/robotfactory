@@ -91,7 +91,6 @@ static int read_files(FILE *asmbly, FILE *bin)
         my_cleanstr(line, ' ', "\"");
         lines[i] = my_str_to_word_array(line, " ");
         i++;
-
     }
     lines[i] = 0;
     lines_arr[i] = 0;
