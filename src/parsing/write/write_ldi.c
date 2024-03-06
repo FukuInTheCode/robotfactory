@@ -31,8 +31,8 @@ static unsigned long write_arg2(char **argv, FILE *bin)
         return fwrite(&nbr, sizeof(uint8_t), 1, bin);
     }
     if (is_direct(argv[2])) {
-        nbr = my_revbyte_32(my_getnbr(argv[2] + 1));
-        return fwrite(&nbr, sizeof(int), 1, bin);
+        nbr = my_revbyte_16(my_getnbr(argv[2] + 1));
+        return fwrite(&nbr, sizeof(uint16_t), 1, bin);
     }
     return 0;
 }
