@@ -47,8 +47,8 @@ static unsigned long write_arg3(char **argv, FILE *bin)
     unsigned int nbr;
 
     if (is_direct(argv[3])) {
-        nbr = my_revbyte_32(my_getnbr(argv[3] + 1));
-        fwrite(&nbr, sizeof(int), 1, bin);
+        nbr = my_revbyte_16(my_getnbr(argv[3] + 1));
+        fwrite(&nbr, sizeof(uint16_t), 1, bin);
     }
     if (is_register(argv[3])) {
         nbr = my_getnbr(argv[3] + 1);
@@ -63,7 +63,7 @@ static unsigned long write_arg2(char **argv, FILE *bin)
 
     if (is_direct(argv[2])) {
         nbr = my_revbyte_32(my_getnbr(argv[2] + 1));
-        fwrite(&nbr, sizeof(int), 1, bin);
+        fwrite(&nbr, sizeof(uint16_t), 1, bin);
     }
     if (is_register(argv[2])) {
         nbr = my_getnbr(argv[2] + 1);

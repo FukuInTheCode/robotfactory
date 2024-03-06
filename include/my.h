@@ -64,6 +64,9 @@ int write_zjmp(char **, FILE *);
 int write_sti(char **, FILE *);
 int write_fork(char **, FILE *);
 int write_aff(char **, FILE *);
+int write_lfork(char **, FILE *);
+int write_lldi(char **, FILE *);
+int write_lld(char **, FILE *);
 
 bool is_direct(char const *);
 bool is_label(char const *);
@@ -102,6 +105,9 @@ bool is_zjmp(char **, FILE *);
 bool is_sti(char **, FILE *);
 bool is_fork(char **, FILE *);
 bool is_aff(char **, FILE *);
+bool is_lfork(char **, FILE *);
+bool is_lld(char **, FILE *);
+bool is_lldi(char **, FILE *);
 
 typedef bool(*is_func)(char **, FILE *);
 
@@ -120,6 +126,12 @@ static is_func_t const is_functions_array[] = {
     {is_and},
     {is_zjmp},
     {is_ldi},
+    {is_fork},
+    {is_lldi},
+    {is_lld},
+    {is_sti},
+    {is_lfork},
+    {is_aff},
     {NULL},
 };
 
