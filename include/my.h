@@ -64,6 +64,8 @@ bool is_register(char const *);
 int count_live(char **);
 int count_st(char **);
 int count_ld(char **);
+int count_add(char **);
+int count_sub(char **);
 
 bool is_live(char **, FILE *);
 bool is_comment(char **, FILE *, header_t *);
