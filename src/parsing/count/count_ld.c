@@ -9,11 +9,11 @@
 
 int count_ld(char **argv)
 {
-    int count = 3;
+    int count = 5;
 
     if (my_strcmp(*argv, "ld"))
         return 0;
     if (argv[1])
-        count += 2 * is_indirect(argv[1]);
+        count += 2 * is_direct(argv[1]);
     return count;
 }
