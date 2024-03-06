@@ -10,7 +10,7 @@
 static unsigned long write_coding_byte2(char **argv, FILE *bin)
 {
     uint8_t coding_byte;
-    
+
     if (is_direct(argv[2])) {
         if (is_register(argv[3])) {
             coding_byte = get_coding_byte(REGISTRE, DIRECT, REGISTRE, OTHER);
