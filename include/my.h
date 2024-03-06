@@ -113,6 +113,8 @@ static is_func_t const is_functions_array[] = {
     {is_add},
     {is_sub},
     {is_and},
+    {is_zjmp},
+    {is_ldi},
     {NULL},
 };
 
