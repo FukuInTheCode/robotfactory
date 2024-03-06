@@ -23,7 +23,7 @@ static int find_pro_size(char **lines[5001])
 static int do_header(char *lines[5001], FILE *bin, char **lines2[5001])
 {
     char **argv = NULL;
-    header_t header = {my_revbyte_32(COREWAR_EXEC_MAGIC), {0}, 0, {0}};
+    header_t header = {my_revbyte_32(COREWAR_EXEC_MAGIC), "", 0, ""};
 
     if (!*lines)
         return 84;
@@ -66,25 +66,35 @@ static bool is_line_null(char const *line)
     return true;
 }
 
+static bool cleanstr_this(char *line)
+{
+    my_cleanstr(line, '\0', "#");
+    my_cleanstr(line, ' ', "\n\t,");
+    if (is_line_null(line))
+        return false;
+    return true;
+}
+
 static int read_files(FILE *asmbly, FILE *bin)
 {
     char *line = NULL;
     size_t len = 0;
-    char **lines[5001] = {0};
-    char *lines_arr[5001] = {0};
+    char **lines[5001];
+    char *lines_arr[5001];
     int i = 0;
 
     for (int aa = getline(&line, &len, asmbly); aa != -1;
         aa = getline(&line, &len, asmbly)) {
-        my_cleanstr(line, '\0', "#");
-        my_cleanstr(line, ' ', "\n\t,");
-        if (is_line_null(line))
+        if (!cleanstr_this(line))
             continue;
         lines_arr[i] = my_strdup(line);
         my_cleanstr(line, ' ', "\"");
         lines[i] = my_str_to_word_array(line, " ");
         i++;
+
     }
+    lines[i] = 0;
+    lines_arr[i] = 0;
     if (do_header(lines_arr, bin, lines) == 84)
         return 84;
     return handle_lines(lines, bin);
