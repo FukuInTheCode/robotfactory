@@ -103,6 +103,7 @@ static is_func_t const is_functions_array[] = {
     {is_st},
     {is_add},
     {is_sub},
+    {is_and},
     {NULL},
 };
 
