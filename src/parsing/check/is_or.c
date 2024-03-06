@@ -19,7 +19,7 @@ bool is_or(char **argv, FILE *bin)
         && (is_direct(argv[2]) || is_indirect(argv[2])
         || is_label(argv[2]) || is_register(argv[2]))
         && (is_register(argv[3]))) {
-        if (write_and(argv, bin) == 84)
+        if (write_or(argv, bin) == 84)
             return false;
         return true;
     }

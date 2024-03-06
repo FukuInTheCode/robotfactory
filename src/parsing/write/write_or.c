@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-static uint8_t get_coding_byte_and_la_suite(char **argv, FILE *bin)
+static uint8_t get_coding_byte_or_la_suite(char **argv, FILE *bin)
 {
     uint8_t coding_byte;
 
@@ -39,7 +39,7 @@ static uint8_t get_coding_byte_or(char **argv, FILE *bin)
             return get_coding_byte(INDIRECT, REGISTRE, REGISTRE, OTHER);
     }
     if (is_register(argv[1]))
-        return get_coding_byte_and_la_suite(argv, bin);
+        return get_coding_byte_or_la_suite(argv, bin);
     return 84;
 }
 
@@ -98,9 +98,9 @@ int write_or(char **argv, FILE *bin)
     uint8_t nbr3 = my_getnbr(argv[3] + 1);
 
     fwrite(&indicator, sizeof(indicator), 1, bin);
-    coding_byte = get_coding_byte_and(argv, bin);
+    coding_byte = get_coding_byte_or(argv, bin);
     fwrite(&coding_byte, sizeof(coding_byte), 1, bin);
-    if (write_arg1_and(argv, bin) == 84 || write_arg2_and(argv, bin) == 84)
+    if (write_arg1_or(argv, bin) == 84 || write_arg2_or(argv, bin) == 84)
         return 84;
     fwrite(&nbr3, sizeof(uint8_t), 1, bin);
     return 0;
