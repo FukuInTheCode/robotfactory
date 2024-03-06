@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-int count_add(char **argv)
+int count_sub(char **argv)
 {
     if (my_strcmp("sub", *argv))
         return 0;
