@@ -49,15 +49,15 @@ unsigned long write_arg1_and(char **argv, FILE *bin)
     uint16_t label = 0;
 
     if (is_label(argv[1])) {
-        nbr = my_revbyte16(my_getnbr(argv[1] + 2));
+        nbr = my_revbyte_16(my_getnbr(argv[1] + 2));
         return fwrite(&label, sizeof(uint16_t), 1, bin);
     }
     if (is_direct(argv[1])) {
-        nbr = my_revbyte32(my_getnbr(argv[1] + 1));
+        nbr = my_revbyte_32(my_getnbr(argv[1] + 1));
         return fwrite(&nbr, sizeof(int), 1, bin);
     }
     if (is_indirect(argv[1])) {
-        nbr = my_revbyte16(my_getnbr(argv[1]));
+        nbr = my_revbyte_16(my_getnbr(argv[1]));
         return fwrite(&nbr, sizeof(uint16_t), 1, bin);
     }
     if (is_register(argv[1])) {
@@ -73,15 +73,15 @@ unsigned long write_arg2_and(char **argv, FILE *bin)
     uint16_t label = 0;
 
     if (is_label(argv[1])) {
-        nbr = my_revbyte16(my_getnbr(argv[1] + 2));
+        nbr = my_revbyte_16(my_getnbr(argv[1] + 2));
         return fwrite(&label, sizeof(uint16_t), 1, bin);
     }
     if (is_direct(argv[1])) {
-        nbr = my_revbyte32(my_getnbr(argv[1] + 1));
+        nbr = my_revbyte_32(my_getnbr(argv[1] + 1));
         return fwrite(&nbr, sizeof(int), 1, bin);
     }
     if (is_indirect(argv[1])) {
-        nbr = my_revbyte16(my_getnbr(argv[1]));
+        nbr = my_revbyte_16(my_getnbr(argv[1]));
         return fwrite(&nbr, sizeof(uint16_t), 1, bin);
     }
     if (is_register(argv[1])) {
@@ -98,7 +98,7 @@ int write_and(char **argv, FILE *bin)
     uint8_t nbr3 = my_getnbr(argv[3] + 1);
 
     fwrite(&indicator, sizeof(indicator), 1, bin);
-    coding_byte = my_revbyte32(get_coding_byte_and(argv, bin));
+    coding_byte = my_revbyte_32(get_coding_byte_and(argv, bin));
     if (coding_byte == 84)
         return 84;
     fwrite(&coding_byte, sizeof(coding_byte), 1, bin);
