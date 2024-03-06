@@ -7,11 +7,11 @@
 
 #include "my.h"
 
-int count_st(char **argv)
+int count_ld(char **argv)
 {
     int count = 3;
 
-    if (my_strcmp(*argv, "st"))
+    if (my_strcmp(*argv, "ld"))
         return 0;
     if (argv[1])
         count += 2 * is_indirect(argv[1]);
