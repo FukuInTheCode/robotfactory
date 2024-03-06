@@ -14,7 +14,6 @@ uint8_t my_revbyte_8(uint8_t num)
     for (int i = 0; i < 8; i++) {
         result |= ((num >> i) & 1) << (7 - i);
     }
-
     return result;
 }
 
@@ -28,4 +27,3 @@ uint32_t my_revbyte_32(uint32_t num)
     return ((num & 0xFF) << 24) | (((num >> 8) & 0xFF) << 16)
         | (((num >> 16) & 0xFF) << 8) | ((num >> 24) & 0xFF);
 }
-
