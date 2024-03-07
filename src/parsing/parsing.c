@@ -69,7 +69,7 @@ static bool is_line_null(char const *line)
 static bool cleanstr_this(char *line)
 {
     my_cleanstr(line, '\0', "#");
-    my_cleanstr(line, ' ', "\n\t,");
+    my_cleanstr(line, ' ', "\n\t");
     if (is_line_null(line))
         return false;
     return true;
@@ -88,7 +88,7 @@ static int read_files(FILE *asmbly, FILE *bin)
         if (!cleanstr_this(line))
             continue;
         lines_arr[i] = my_strdup(line);
-        my_cleanstr(line, ' ', "\"");
+        my_cleanstr(line, ' ', "\",");
         lines[i] = my_str_to_word_array(line, " ");
         i++;
     }
