@@ -18,6 +18,8 @@ int write_add(char **argv, FILE *bin)
     uint8_t nbr2 = my_getnbr(argv[2] + 1);
     uint8_t nbr3 = my_getnbr(argv[3] + 1);
 
+    if (!bin)
+        return 0;
     fwrite(&indicator, sizeof(indicator), 1, bin);
     fwrite(&coding_byte, sizeof(coding_byte), 1, bin);
     fwrite(&nbr, sizeof(uint8_t), 1, bin);

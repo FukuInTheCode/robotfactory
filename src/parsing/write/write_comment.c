@@ -10,6 +10,8 @@
 
 int write_comment(char **argv, FILE *bin, header_t *header)
 {
+    if (!bin)
+        return 0;
     my_strcat(header->comment, argv[1]);
     return 0;
 }

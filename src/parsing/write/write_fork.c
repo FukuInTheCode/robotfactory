@@ -12,6 +12,8 @@ int write_fork(char **argv, FILE *bin)
     unsigned char indicator = 0x0c;
     uint16_t nbr = my_revbyte_16(my_getnbr(argv[1] + 1));
 
+    if (!bin)
+        return 0;
     fwrite(&indicator, sizeof(indicator), 1, bin);
     fwrite(&nbr, sizeof(uint16_t), 1, bin);
     return 0;

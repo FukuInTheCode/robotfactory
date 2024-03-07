@@ -32,6 +32,8 @@ int write_st(char **argv, FILE *bin)
     uint16_t nbr2 = my_getnbr(argv[2] + 1);
     uint8_t offset = 0;
 
+    if (!bin)
+        return 0;
     fwrite(&indicator, sizeof(indicator), 1, bin);
     write_coding(argv, bin);
     if (is_indirect(argv[2])) {

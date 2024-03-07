@@ -27,6 +27,9 @@ int open_asm(char const *path)
 
     if (fd == NULL)
         return 84;
+    if (parsing(fd, NULL) == 84)
+        return 84;
+    fseek(fd, 0, SEEK_SET);
     name = get_name(path);
     if (create_bin(fd, name) == 84)
         return 84;

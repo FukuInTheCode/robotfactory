@@ -13,9 +13,10 @@ bool is_live(char **argv, FILE *bin)
 
     len = find_array_len(argv);
     if (len == 2 && my_strcmp(argv[0], "live") == 0 && argv[1] != NULL) {
-        if (is_direct(argv[1]) == true)
+        if (is_direct(argv[1]) == true) {
             write_live(argv, bin);
-        return true;
+            return true;
+        }
     }
     return false;
 }

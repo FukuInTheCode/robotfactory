@@ -33,6 +33,8 @@ int write_lld(char **argv, FILE *bin)
     uint8_t nbr2 = my_getnbr(argv[2] + 1);
     uint8_t offset = 0;
 
+    if (!bin)
+        return 0;
     fwrite(&indicator, sizeof(indicator), 1, bin);
     write_coding(argv, bin);
     if (is_direct(argv[1])) {

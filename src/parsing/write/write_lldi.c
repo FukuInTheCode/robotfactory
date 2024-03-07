@@ -60,6 +60,8 @@ int write_lldi(char **argv, FILE *bin)
     uint8_t coding_byte;
     uint8_t nbr = my_getnbr(argv[3] +1);
 
+    if (!bin)
+        return 0;
     fwrite(&indicator, sizeof(indicator), 1, bin);
     coding_byte = get_coding_byte_lldi(argv);
     fwrite(&coding_byte, sizeof(uint8_t), 1, bin);

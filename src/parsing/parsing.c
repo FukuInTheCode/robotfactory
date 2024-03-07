@@ -40,7 +40,7 @@ static int do_header(char *lines[5001], FILE *bin, char **lines2[5001])
         return 84;
     my_free_str_array(argv);
     header.prog_size = find_pro_size(lines2);
-    fwrite(&header, sizeof(header_t), 1, bin);
+    bin && fwrite(&header, sizeof(header_t), 1, bin);
     return 0;
 }
 
@@ -101,7 +101,7 @@ static int read_files(FILE *asmbly, FILE *bin)
 
 int parsing(FILE *asmbly, FILE *bin)
 {
-    if (!asmbly || !bin)
+    if (!asmbly)
         return 84;
     return read_files(asmbly, bin);
 }

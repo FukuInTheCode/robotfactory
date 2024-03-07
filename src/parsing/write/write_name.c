@@ -10,6 +10,8 @@
 
 int write_name(char **argv, FILE *bin, header_t *header)
 {
+    if (!bin)
+        return 0;
     my_strcat(header->prog_name, argv[1]);
     return 0;
 }

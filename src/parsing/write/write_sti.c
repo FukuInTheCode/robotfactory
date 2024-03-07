@@ -77,6 +77,8 @@ int write_sti(char **argv, FILE *bin)
     unsigned char indicator = 0x0b;
     uint8_t nbr = my_getnbr(argv[1] + 1);
 
+    if (!bin)
+        return 0;
     fwrite(&indicator, sizeof(indicator), 1, bin);
     write_coding_byte(argv, bin);
     fwrite(&nbr, sizeof(uint8_t), 1, bin);

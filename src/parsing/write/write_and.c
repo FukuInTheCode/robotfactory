@@ -97,6 +97,8 @@ int write_and(char **argv, FILE *bin)
     uint8_t coding_byte;
     uint8_t nbr3 = my_getnbr(argv[3] + 1);
 
+    if (!bin)
+        return 0;
     fwrite(&indicator, sizeof(indicator), 1, bin);
     coding_byte = get_coding_byte_and(argv, bin);
     fwrite(&coding_byte, sizeof(coding_byte), 1, bin);
