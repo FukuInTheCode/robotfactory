@@ -13,7 +13,7 @@ int count_ldi(char **argv)
 
     if (my_strcmp("ldi", *argv) || !argv[1] || !argv[2] || !argv[3])
         return 0;
-    count += is_direct(argv[1]);
-    count += is_direct(argv[2]);
+    count += is_direct(argv[1]) + is_indirect(argv[1]);
+    count += is_direct(argv[2]) + is_indirect(argv[2]);
     return count;
 }
