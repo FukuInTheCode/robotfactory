@@ -27,12 +27,12 @@ static int do_header(char *lines[5001], FILE *bin, char **lines2[5001])
 
     if (!*lines)
         return 84;
-    if (!my_strstr(lines[0], NAME_CMD_STRING))
+    if (!lines[0] || !my_strstr(lines[0], NAME_CMD_STRING))
         return 84;
     argv = my_str_to_word_array(lines[0], "\"");
     if (!is_name(argv, bin, &header))
         return 84;
-    if (!my_strstr(lines[1], COMMENT_CMD_STRING))
+    if (!lines[1] || !my_strstr(lines[1], COMMENT_CMD_STRING))
         return 84;
     my_free_str_array(argv);
     argv = my_str_to_word_array(lines[1], "\"");
